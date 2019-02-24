@@ -1,6 +1,5 @@
 package services;
 
-import runable.CasinoTest;
 import helpers.UuidHelper;
 import model.GamePlay;
 import model.GameType;
@@ -12,9 +11,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import runable.CasinoTest;
 import services.bet.PlayerBet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CasinoTest.class})

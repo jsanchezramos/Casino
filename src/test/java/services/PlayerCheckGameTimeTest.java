@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import runable.CasinoTest;
 import services.bet.PlayerBet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CasinoTest.class})
