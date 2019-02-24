@@ -20,16 +20,16 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CasinoTest.class})
 
-public class PlayerGameTimeTest {
+public class PlayerCheckGameTimeTest {
 
     @Autowired
     private PlayerBet playerBetPoker;
     @Autowired
     private PlayerCreate playerCreate;
     @Autowired
-    private PlayerTranstion playerTranstion;
+    private PlayerPutTranstion playerPutTranstion;
     @Autowired
-    private PlayerGameTime playerGameTime;
+    private PlayerCheckGameTime playerCheckGameTime;
 
     private Player player;
     private GamePlay gamePlay;
@@ -44,28 +44,28 @@ public class PlayerGameTimeTest {
     @Test
     public void whenPlayerGameBeforeLimitTimePlay(){
         playerBetPoker.playerBetGame(gamePlay,player,5);
-        if(playerGameTime.checkPlayerWaitPlayTheGame(player,gamePlay)){
-            playerTranstion.putTransitionGame(player,gamePlay,5);
+        if(playerCheckGameTime.checkPlayerWaitPlayTheGame(player,gamePlay)){
+            playerPutTranstion.putTransitionGame(player,gamePlay,5);
         }
 
         playerBetPoker.playerBetGame(gamePlay,player,5);
-        Boolean okPlay = playerGameTime.checkPlayerWaitPlayTheGame(player,gamePlay);
+        Boolean okPlay = playerCheckGameTime.checkPlayerWaitPlayTheGame(player,gamePlay);
         assertFalse(okPlay);
     }
 
     @Test
     public void whenPlayerGameExcessTimePlay(){
-        if(playerGameTime.checkPlayerExcessTimePlay(player,gamePlay)){
+        if(playerCheckGameTime.checkPlayerExcessTimePlay(player,gamePlay)){
             playerBetPoker.playerBetGame(gamePlay,player,5);
-            playerTranstion.putTransitionGame(player,gamePlay,5);
+            playerPutTranstion.putTransitionGame(player,gamePlay,5);
         }
 
-        if(playerGameTime.checkPlayerExcessTimePlay(player,gamePlay)){
+        if(playerCheckGameTime.checkPlayerExcessTimePlay(player,gamePlay)){
             playerBetPoker.playerBetGame(gamePlay,player,5);
-            playerTranstion.putTransitionGame(player,gamePlay,5);
+            playerPutTranstion.putTransitionGame(player,gamePlay,5);
         }
 
-        Boolean okPlay = playerGameTime.checkPlayerWaitPlayTheGame(player,gamePlay);
+        Boolean okPlay = playerCheckGameTime.checkPlayerWaitPlayTheGame(player,gamePlay);
         if (okPlay)playerBetPoker.playerBetGame(gamePlay,player,5);
 
         assertFalse(okPlay);

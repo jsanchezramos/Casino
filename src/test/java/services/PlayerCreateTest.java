@@ -15,7 +15,8 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CasinoTest.class})
 public class PlayerCreateTest {
-    @Autowired @Qualifier("playerCreate")
+
+    @Autowired
     private PlayerCreate playerCreate;
 
     @Test

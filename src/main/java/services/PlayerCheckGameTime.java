@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
-public final class PlayerGameTime {
+public final class PlayerCheckGameTime {
 
-    private PlayerTranstion playerTranstion;
+    private PlayerGetTranstion playerGetTranstion;
 
     @Autowired
-    public PlayerGameTime(PlayerTranstion playerTranstion) {
-        this.playerTranstion = playerTranstion;
+    public PlayerCheckGameTime(PlayerGetTranstion playerGetTranstion) {
+        this.playerGetTranstion = playerGetTranstion;
     }
     public Boolean checkPlayerWaitPlayTheGame(Player player, GamePlay gamePlay){
-        Transition lastDateGame = playerTranstion.getLastTimeTransition(player,gamePlay);
+        Transition lastDateGame = playerGetTranstion.getLastTimeTransition(player,gamePlay);
         if(lastDateGame != null){
             long differents = (Math.abs(lastDateGame.getLastPlay().getTime() - new Date().getTime())) / 60000;
             return differents > player.getTimeWaitToPlay();
@@ -26,7 +26,7 @@ public final class PlayerGameTime {
             return true;
     }
     public Boolean checkPlayerExcessTimePlay(Player player,GamePlay gamePlay){
-        Transition lastDateGame = playerTranstion.getLastTimeTransition(player,gamePlay);
+        Transition lastDateGame = playerGetTranstion.getLastTimeTransition(player,gamePlay);
         if(lastDateGame != null){
             long differents = (Math.abs(lastDateGame.getLastPlay().getTime() - new Date().getTime())) / 60000;
             return differents <= player.getTimeToPlay();

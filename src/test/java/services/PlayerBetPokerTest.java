@@ -26,7 +26,7 @@ public class PlayerBetPokerTest {
     @Autowired
     private PlayerCreate playerCreate;
     @Autowired
-    private PlayerTranstion playerTranstion;
+    private PlayerPutTranstion playerPutTranstion;
 
     /**
      * Player bet win 100% award
@@ -40,7 +40,7 @@ public class PlayerBetPokerTest {
         GamePlay gamePlay = new GamePlay(1,GameType.POKER,100,configPoker);
 
         Boolean award = playerBetPoker.playerBetGame(gamePlay,player,5);
-        playerTranstion.putTransitionGame(player,gamePlay,5);
+        playerPutTranstion.putTransitionGame(player,gamePlay,5);
         assertTrue(award);
     }
 
@@ -56,7 +56,7 @@ public class PlayerBetPokerTest {
         GamePlay gamePlay = new GamePlay(1,GameType.POKER,0,configPoker);
 
         Boolean award = playerBetPoker.playerBetGame(gamePlay,player,5);
-        playerTranstion.putTransitionGame(player,gamePlay,5);
+        playerPutTranstion.putTransitionGame(player,gamePlay,5);
         assertFalse(award);
     }
 
