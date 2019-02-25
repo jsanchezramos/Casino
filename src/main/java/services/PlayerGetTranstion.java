@@ -23,7 +23,12 @@ public final class PlayerGetTranstion {
     }
 
     public Transition getLastTimeTransition(Player player,GamePlay gamePlay){
-        List<Transition> transtionItem = gameTransitionsRepository.findByUserIdAndNamePlayOrderByLastPlayDesc(player.getUserId(),gamePlay.getGameType().toString());
-        return (transtionItem.size() != 0)? transtionItem.get(0): null;
+        try{
+            List<Transition> transtionItem = gameTransitionsRepository.findByUserIdAndNamePlayOrderByLastPlayDesc(player.getUserId(),gamePlay.getGameType().toString());
+            return (transtionItem.size() != 0)? transtionItem.get(0): null;
+        }catch (Exception es){
+            logger.error("Error getLastTimeTransition",es);
+            return null;
+        }
     }
 }

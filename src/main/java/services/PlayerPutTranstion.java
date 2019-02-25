@@ -23,8 +23,12 @@ public final class PlayerPutTranstion {
     }
 
     public void putTransitionGame(Player player, GamePlay gamePlay, int increment) {
-        Transition transition = new Transition(player.getUserId(),gamePlay.getGameType().toString(),increment, new Date());
-        Transition ok = gameTransitionsRepository.save(transition);
-        logger.info("Transition "+ ok.getIdTransition()+ " User:"+ ok.getUserId() + " Increment: "+increment + " Game: "+ok.getNamePlay()+" Time: "+ok.getLastPlay() );
+        try{
+            Transition transition = new Transition(player.getUserId(),gamePlay.getGameType().toString(),increment, new Date());
+            Transition ok = gameTransitionsRepository.save(transition);
+            logger.info("Transition "+ ok.getIdTransition()+ " User:"+ ok.getUserId() + " Increment: "+increment + " Game: "+ok.getNamePlay()+" Time: "+ok.getLastPlay() );
+        }catch (Exception ex){
+            logger.error("Error putTransitionGame: ",ex);
+        }
     }
 }

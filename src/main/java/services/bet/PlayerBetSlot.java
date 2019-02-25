@@ -6,7 +6,6 @@ import model.Player;
 import model.configurations.GameConfigSlot;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public final class PlayerBetSlot implements PlayerBet{
 

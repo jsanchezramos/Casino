@@ -6,7 +6,6 @@ import model.Player;
 import model.configurations.GameConfigVideoBingo;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public final class PlayerBetVideoBingo implements PlayerBet{
 
