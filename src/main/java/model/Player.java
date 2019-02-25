@@ -35,6 +35,6 @@ public final class Player {
         return providerUser;
     }
     public void setBalance(int balance) {
-        this.balance = balance;
+        this.balance = this.balance + balance;
     }
 }
