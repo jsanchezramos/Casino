@@ -1,5 +1,5 @@
 # Casino spring boot
-Casino realizado con spring boot.
+Casino realizado con spring boot..
 
 Realizado aplicando TDD
 
@@ -21,4 +21,4 @@ Esta parte se podria mejorar realizando una abstracion de las clases por control
 ```
 mvn package && java -jar target/CasinoZitro-1.0-SNAPSHOT.jar
 ```
-Se ejecutan los test y ejecuta la aplicación modo consola.
+Se ejecutan los test y ejecuta la aplicación modo consola-
